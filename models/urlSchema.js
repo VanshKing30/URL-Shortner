@@ -16,4 +16,4 @@ const URLschema = new Schema({
     
 },{timestamps : true});
 
-const URL = mongoose.model('url' , URLschema);
+module.exports = mongoose.model("url" , URLschema );

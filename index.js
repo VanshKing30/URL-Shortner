@@ -4,6 +4,7 @@ const app = express();
 const urlRoute = require("./routes/url");
 
 require("dotenv").config();
+app.use(express.json());
 
 const PORT = process.env.PORT || 4000;
 
