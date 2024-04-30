@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const { GenerateShortUrl} = require("../controllers/url")
+const { GenerateShortUrl , GetRedirected} = require("../controllers/url")
 
 router.post('/' , GenerateShortUrl);
+
+router.get('/:shortId' , GetRedirected );
 
 
 

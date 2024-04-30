@@ -26,6 +26,21 @@ async function GenerateShortUrl (req , res) {
 
 }
 
+async function GetRedirected (req , res) {
+    const shortId = req.params.shortId;
+    const entry = await URL.findOneAndUpdate({
+        shortId
+    } , {$push : {
+        visitHistory : {
+            timestamp : Date.now()
+        }
+    },
+}
+);
+res.redirect(entry.redirectURL);
+    
+}
+
 module.exports = {
-    GenerateShortUrl,
+    GenerateShortUrl,GetRedirected
 };

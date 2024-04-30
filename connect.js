@@ -1,5 +1,5 @@
-const { default: mongoose } = require('mongoose');
-const mogoose = require('mongoose');
+// const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 
 const connectDb = () =>{
     mongoose.connect(process.env.DATABASE_URL , {
