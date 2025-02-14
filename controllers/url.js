@@ -1,7 +1,6 @@
 const URL = require("../models/urlSchema");
 const shortid = require("shortid")
-
-
+const {sendAnalyticsUpdate} = require("../socket");
 
 async function GenerateShortUrl (req , res) {
 
@@ -37,7 +36,17 @@ async function GetRedirected (req , res) {
     },
 }
 );
-res.redirect(entry.redirectURL);
+
+    if(entry){
+        sendAnalyticsUpdate(shortId);
+        res.redirect(entry.redirectURL);
+
+    }
+    else{
+        res.status(404).json({
+            error : "URL not found"
+        })
+    }
     
 }
 
